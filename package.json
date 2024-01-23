@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "astro": "^4.1.2",
+    "flubber": "^0.4.2",
     "motion": "^10.17.0"
   }
 }

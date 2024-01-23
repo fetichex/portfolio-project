@@ -13,6 +13,12 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -21,6 +27,15 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
+  :root {
+    --font-size-sm: clamp(0.75rem, -0.1vw + 0.77rem, 0.62rem);
+    --font-size-base: clamp(1rem, 0vw + 1rem, 1rem);
+    --font-size-md: clamp(1.33rem, 0.21vw + 1.28rem, 1.62rem);
+    --font-size-lg: clamp(1.78rem, 0.62vw + 1.62rem, 2.62rem);
+    --font-size-xl: clamp(2.37rem, 1.38vw + 2.02rem, 4.24rem);
+    --font-size-xxl: clamp(3.16rem, 2.74vw + 2.47rem, 6.85rem);
+    --font-size-xxxl: clamp(4.21rem, 5.1vw + 2.93rem, 11.09rem);
+  }
   *,
   ::before,
   ::after {
@@ -28,8 +43,7 @@ const { title } = Astro.props;
   }
 
   html {
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: "DM Mono", monospace;
     font-size: 16px;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -85,11 +99,12 @@ const { title } = Astro.props;
   }
 
   h1 {
-    font-size: 2.369em;
+    font-size: var(--font-size-xl);
+    margin: 0;
   }
 
   h2 {
-    font-size: 1.777em;
+    font-size: var(--font-size-base);
   }
 
   h3 {
@@ -107,7 +122,6 @@ const { title } = Astro.props;
   h6 {
     font-size: 0.563em;
   }
-
   table {
     text-indent: 0;
     border-color: inherit;

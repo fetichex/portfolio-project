@@ -1,0 +1,55 @@
+---
+import Wrapper from "../Wrapper.astro";
+---
+
+<section>
+  <div class="loader">
+    <Wrapper>
+      <div class="title-content">
+        <h1 id="title1">DIEGO</h1>
+        <h1 id="title2"><span id="yellow-dot">&times;</span>CANO</h1>
+        <div id="subtitle-content">
+          <h2 id="subtitle">
+            Geek of robust & simple development
+          </h2>
+        </div>
+      </div>
+    </Wrapper>
+  </div>
+</section>
+
+<script>
+  import { introAnimation } from "./introAnimation";
+  document.addEventListener("DOMContentLoaded", function () {
+    introAnimation();
+  });
+</script>
+
+<style>
+  .loader {
+    height: 100vh;
+    width: 100vw;
+  }
+  #title1 {
+    opacity: 0;
+  }
+  #title2 {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  #subtitle {
+    opacity: 0;
+  }
+  #yellow-dot {
+    opacity: 0;
+  }
+  #subtitle-content {
+    max-width:;
+  }
+  .title-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+</style>

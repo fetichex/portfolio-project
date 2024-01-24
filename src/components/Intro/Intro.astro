@@ -1,50 +1,37 @@
 ---
 import Wrapper from "../Wrapper.astro";
+import Card from "../Card/Card.astro";
+import projectsData from "./data.json";
 ---
 
-<section>
-  <div class="loader">
+<Fragment>
+  <main class="loader">
     <Wrapper>
       <div class="title-content">
         <h1 id="title1">DIEGO</h1>
         <h1 id="title2"><span id="yellow-dot">&times;</span>CANO</h1>
         <div id="subtitle-content">
-          <h2 id="subtitle">
-            Geek of robust & simple development
-          </h2>
+          <h2 id="subtitle">Geek of robust & simple development</h2>
         </div>
       </div>
+      <Card data={projectsData} />
     </Wrapper>
-  </div>
-</section>
-
-<script>
-  import { introAnimation } from "./introAnimation";
-  document.addEventListener("DOMContentLoaded", function () {
-    introAnimation();
-  });
-</script>
+  </main>
+</Fragment>
 
 <style>
   .loader {
     height: 100vh;
     width: 100vw;
   }
-  #title1 {
-    opacity: 0;
-  }
-  #title2 {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  #subtitle {
-    opacity: 0;
-  }
+  #title1,
+  #title2,
+  #subtitle,
   #yellow-dot {
     opacity: 0;
   }
-  #subtitle-content {
-    max-width:;
+  #title2 {
+    transform: translateY(-40px);
   }
   .title-content {
     position: relative;
@@ -53,3 +40,8 @@ import Wrapper from "../Wrapper.astro";
     text-align: center;
   }
 </style>
+
+<script>
+  import { introAnimation } from "./introAnimation";
+  introAnimation();
+</script>

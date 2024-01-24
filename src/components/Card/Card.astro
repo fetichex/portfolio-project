@@ -1,0 +1,48 @@
+---
+const { data } = Astro.props;
+interface Project {
+  titulo: string;
+  descripcion: string;
+  link: string;
+  tecnologias: string[];
+}
+---
+
+<ul id="card-list">
+  {
+    data.map((project: Project) => (
+      <li>
+        <div id="card-content">
+          <h3>
+            <a
+              id="card-link"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Learn more about ${project.titulo}`}
+            >
+              {project.titulo}
+              {project.descripcion}
+            </a>
+          </h3>
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  #card-content {
+    padding-block: 0.8rem;
+  }
+  h3 {
+    margin: 0;
+  }
+  #card-list {
+    position: absolute;
+    opacity: 0;
+  }
+  li {
+    transform: translateY(50px);
+  }
+</style>

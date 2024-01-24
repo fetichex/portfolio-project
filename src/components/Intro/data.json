@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "titulo": "Sistema de Gesti\u00f3n de Inventarios",
         "descripcion": "Una soluci\u00f3n para manejar el inventario de una empresa mediana, con funcionalidades de seguimiento, pron\u00f3stico y reportes.",
         "link": "https://ejemplo-proyecto-inventario.com",
@@ -11,6 +12,7 @@
         ]
     },
     {
+        "id": 2,
         "titulo": "Aplicaci\u00f3n M\u00f3vil de Fitness",
         "descripcion": "App m\u00f3vil que ayuda a los usuarios a mantener un estilo de vida saludable mediante el seguimiento de la actividad f\u00edsica y la nutrici\u00f3n.",
         "link": "https://ejemplo-app-fitness.com",
@@ -22,6 +24,7 @@
         ]
     },
     {
+        "id": 3,
         "titulo": "Plataforma Educativa Online",
         "descripcion": "Plataforma web para cursos en l\u00ednea, que permite a los educadores crear y distribuir contenido interactivo y a los estudiantes aprender a su propio ritmo.",
         "link": "https://ejemplo-educacion-online.com",
@@ -33,6 +36,7 @@
         ]
     },
     {
+        "id": 4,
         "titulo": "Sistema de Reservas de Hoteles",
         "descripcion": "Una aplicaci\u00f3n web para gestionar reservas en hoteles, que ofrece una interfaz intuitiva para clientes y una robusta gesti\u00f3n para los propietarios de hoteles.",
         "link": "https://ejemplo-reservas-hotel.com",

@@ -1,5 +1,5 @@
 ---
-import Wrapper from "../Wrapper.astro";
+import Wrapper from "../Wrapper/Wrapper.astro";
 import Card from "../Card/Card.astro";
 import projectsData from "./data.json";
 ---
@@ -7,13 +7,20 @@ import projectsData from "./data.json";
 <Fragment>
   <main class="loader">
     <Wrapper>
-      <div class="title-content">
-        <h1 id="title1">DIEGO</h1>
-        <h1 id="title2"><span id="yellow-dot">&times;</span>CANO</h1>
-        <div id="subtitle-content">
-          <h2 id="subtitle">Geek of robust & simple development</h2>
+      <header class="header-content">
+        <h1 class="title">
+          <div class="name-container">
+            <span class="name">DIEGO</span>
+          </div>
+          <div class="lastname-container">
+            <span class="decoration">&times;</span>
+            <span class="lastname">CANO</span>
+          </div>
+        </h1>
+        <div class="subtitle-content">
+          <h2 class="subtitle">Geek of robust & simple development</h2>
         </div>
-      </div>
+      </header>
       <Card data={projectsData} />
     </Wrapper>
   </main>
@@ -24,24 +31,24 @@ import projectsData from "./data.json";
     height: 100vh;
     width: 100vw;
   }
-  #title1,
-  #title2,
-  #subtitle,
-  #yellow-dot {
+  .name,
+  .lastname,
+  .subtitle,
+  .decoration {
     opacity: 0;
   }
-  #title2 {
-    transform: translateY(-40px);
+  .name {
+    transform: scale(0);
   }
-  .title-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  .header-content {
     text-align: center;
+    transform: translateY(20vh);
   }
 </style>
 
 <script>
   import { introAnimation } from "./introAnimation";
-  introAnimation();
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(introAnimation, 500);
+  });
 </script>

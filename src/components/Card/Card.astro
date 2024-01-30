@@ -8,41 +8,44 @@ interface Project {
 }
 ---
 
-<ul id="card-list">
+<ul class="card-list">
   {
-    data.map((project: Project) => (
+    data.map(({ link, titulo, descripcion }: Project) => (
       <li>
-        <div id="card-content">
-          <h3>
-            <a
-              id="card-link"
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Learn more about ${project.titulo}`}
-            >
-              {project.titulo}
-              {project.descripcion}
-            </a>
-          </h3>
-        </div>
+        <a
+          class="card-link"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Learn more about ${titulo}`}
+        >
+          <h3>{titulo}</h3>
+          <p>{descripcion}</p>
+        </a>
       </li>
     ))
   }
 </ul>
 
 <style>
-  #card-content {
-    padding-block: 0.8rem;
-  }
   h3 {
     margin: 0;
   }
-  #card-list {
-    position: absolute;
-    opacity: 0;
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
   }
   li {
-    transform: translateY(50px);
+    opacity: 0;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  .card-link {
+    display: block;
+    padding: 1rem;
   }
 </style>

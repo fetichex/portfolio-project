@@ -101,7 +101,10 @@ const { title } = Astro.props;
   sup {
     top: -0.5em;
   }
-
+  p {
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
   h1 {
     font-size: var(--font-size-xl);
     margin: 0;
@@ -197,5 +200,39 @@ const { title } = Astro.props;
 
   summary {
     display: list-item;
+  }
+
+  a {
+    color: inherit; /* Prevents the blue color, inherits from parent */
+    text-decoration: none; /* Removes the underline */
+    background-color: transparent; /* Removes any background */
+    -webkit-text-decoration-skip: objects; /* Skip descenders in iOS */
+  }
+
+  /* Optional: You might want to add focus and active styles to maintain accessibility */
+  a:focus,
+  a:active {
+    outline: none; /* Removes the outline, but consider replacing it with a custom style for accessibility */
+    border: none; /* Removes any border */
+  }
+
+  /* To remove the tap highlight color in mobile browsers */
+  a:active,
+  a:hover {
+    outline: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  /* To remove the text decoration when hovering (if you want to) */
+  a:hover,
+  a:visited:hover {
+    text-decoration: none;
+  }
+
+  /* To reset font style if needed */
+  a {
+    font-style: normal;
+    font-weight: normal;
   }
 </style>

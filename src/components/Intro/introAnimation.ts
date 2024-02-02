@@ -9,7 +9,7 @@ const DURATION_LONG = 0.8;
 
 export const introAnimation = () => {
   timeline([
-    [".name", { opacity: 1, transform: "scale(1.5)" }, { duration: DURATION_MEDIUM, easing: EASE_IN }],
+    [".name", { opacity: 1 }, { duration: DURATION_MEDIUM, easing: EASE_IN }],
     [
       ".lastname",
       { opacity: 1 },
@@ -32,7 +32,7 @@ export const introAnimation = () => {
     [
       ".header-content",
       { transform: "translateY(0)" },
-      { duration: DURATION_LONG, easing: EASE_IN_OUT, at: "<" },
+      { duration: DURATION_LONG, easing: EASE_IN_OUT, at: DURATION_MEDIUM + DURATION_LONG + DURATION_LONG },
     ],
     [
       ".card-list",

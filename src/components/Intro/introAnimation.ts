@@ -1,78 +1,20 @@
-import { timeline, stagger } from "motion";
-
-const EASE_IN_OUT = [0.16, 1, 0.3, 1];
-const EASE_IN = [0.42, 0, 1, 1];
-const EASE_OUT = [0, 0, 0.58, 1];
-const DURATION_SHORT = 0.4;
-const DURATION_MEDIUM = 0.6;
-const DURATION_LONG = 0.8;
+import gsap from "gsap";
 
 export const introAnimation = () => {
-  timeline([
-    [".name", { opacity: 1 }, { duration: DURATION_MEDIUM, easing: EASE_IN }],
-    [
-      ".lastname",
-      { opacity: 1 },
-      { duration: DURATION_MEDIUM, easing: EASE_IN, at: DURATION_LONG },
-    ],
-    [
-      ".subtitle",
-      { opacity: 1 },
-      {
-        duration: DURATION_SHORT,
-        easing: EASE_OUT,
-        at: DURATION_MEDIUM + DURATION_SHORT,
-      },
-    ],
-    [
-      ".decoration",
-      { opacity: 1 },
-      { duration: DURATION_MEDIUM, easing: EASE_IN_OUT, at: "<" },
-    ],
-    [
-      ".header-content",
-      { transform: "translateY(0)" },
-      { duration: DURATION_LONG, easing: EASE_IN_OUT, at: DURATION_MEDIUM + DURATION_LONG + DURATION_LONG },
-    ],
-    [
-      ".card-list",
-      { opacity: 1 },
-      { duration: DURATION_MEDIUM, easing: EASE_IN, at: "<" },
-    ],
-    [
-      ".card-list li",
-      { opacity: 1, transform: "translateY(0)" },
-      {
-        duration: DURATION_SHORT,
-        easing: EASE_IN,
-        at: "<",
-        delay: stagger(0.15),
-      },
-    ],
-  ]);
+  const tl = gsap.timeline();
+
+  // Convertimos los easing de Motion One a los de GSAP.
+  const EASE_IN_OUT = "power3.inOut";
+  const EASE_IN = "power3.in";
+  const EASE_OUT = "power3.out";
+
+  tl.to(".name", { opacity: 1, duration: 0.6, ease: EASE_IN })
+    .to(".lastname", { opacity: 1, duration: 0.6, ease: EASE_IN }, 0.8) // `at` se convierte en posición relativa en la timeline de GSAP
+    .to(".subtitle", { opacity: 1, duration: 0.4, ease: EASE_OUT }, ">") // Usamos ">" para iniciar esta animación justo después de la anterior
+    .to(".decoration", { opacity: 1, duration: 0.6, ease: EASE_IN_OUT }, "<") // "<" para empezar al mismo tiempo que la anterior
+    .to(".header-content", { y: 0, duration: 0.8, ease: EASE_IN_OUT }, 2.2) // Ajusta según la lógica de tiempo que prefieras
+    .to(".card-list", { opacity: 1, duration: 0.6, ease: EASE_IN }, "<")
+    .to(".card-list li", { opacity: 1, y: 0, duration: 0.4, ease: EASE_IN, stagger: 0.15 }, 2.8);
+
+  // Para animaciones complejas, ajusta los tiempos según necesites.
 };
-
-/* 
-import { timeline, stagger } from "motion";
-
-const EASE_IN_OUT = [0.16, 1, 0.3, 1];
-const EASE_IN = [0.42, 0, 1, 1];
-const EASE_OUT = [0, 0, 0.58, 1];
-const DURATION_SHORT = 0.4;
-const DURATION_MEDIUM = 0.6;
-const DURATION_LONG = 0.8;
-
-export const introAnimation = () => {
-  timeline([
-    [".brutalist-name", { opacity: 1, transform: "scale(1.1)" }, { duration: DURATION_MEDIUM, easing: EASE_IN }],
-    [".brutalist-lastname", { opacity: 1, transform: "scale(1.1)" }, { duration: DURATION_MEDIUM, easing: EASE_IN_OUT, at: "<" }],
-    [".brutalist-subtitle", { opacity: 1, transform: "translateY(-10px)" }, { duration: DURATION_SHORT, easing: EASE_OUT, at: "<" }],
-    [".brutalist-decoration", { opacity: 1, transform: "rotate(45deg)" }, { duration: DURATION_MEDIUM, easing: EASE_IN_OUT, at: "<" }],
-    [".brutalist-header-content", { transform: "translateY(0)" }, { duration: DURATION_LONG, easing: EASE_IN_OUT, at: "<" }],
-    [".brutalist-card-list", { opacity: 1, transform: "translateY(0)" }, { duration: DURATION_MEDIUM, easing: EASE_IN, at: "<" }],
-    [".brutalist-card-list li", { opacity: 1 }, { duration: DURATION_SHORT, easing: EASE_IN, at: "<", delay: stagger(0.15) }],
-  ]);
-};
-
-
-*/

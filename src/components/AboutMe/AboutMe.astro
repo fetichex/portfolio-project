@@ -1,0 +1,149 @@
+---
+import { Image } from "astro:assets";
+
+import imgToTest from "../../assets/p2.jpg";
+---
+
+<div class="wrapper">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="wavy" x="0" y="0" width="100%" height="100%">
+      <feTurbulence
+        id="turbulence"
+        baseFrequency="0.02 0.02"
+        result="NOISE"
+        numOctaves="1"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="20"
+      ></feDisplacementMap>
+    </filter>
+  </svg>
+  <div class="container">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="site-title">Título del Sitio</div>
+        <div class="site-type">Tipo de Sitio</div>
+        <div class="site-year">Año</div>
+      </div>
+    </nav>
+    <div class="divider"></div>
+    <header class="header">
+      <h1>WHO AM I</h1>
+    </header>
+    <div class="hero-image">
+      <Image src={imgToTest} alt="is Diego Cano" class="responsive-image" />
+    </div>
+    <div class="whitespace"></div>
+    <section class="about">
+      <p>Lorem ipsum dolor sit amet...</p>
+      <p>Lorem ipsum dolor sit amet...</p>
+      <p>Lorem ipsum, dolor sit amet...</p>
+    </section>
+    <div class="divider"></div>
+    <div class="whitespace"></div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --divider-color: #333;
+    --text-large: 36px;
+    --text-medium: 24px;
+    --margin-large: 80px;
+    --margin-medium: 40px;
+  }
+
+  svg {
+    position: absolute;
+  }
+
+  .wrapper {
+    margin-inline: auto;
+    width: min(95rem, 90vw);
+    height: 100%;
+  }
+
+  .container {
+    width: 96%;
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+    background: var(--divider-color);
+  }
+
+  .whitespace {
+    height: 80px;
+  }
+
+  .navbar .navbar-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 12px 0;
+    font-size: 16px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  } 
+
+  .navbar .navbar-container .site-title {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+
+  .navbar .navbar-container .site-type {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+  }
+
+  .navbar .navbar-container .site-year {
+    -webkit-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    text-align: right;
+  }
+
+  .header h1 {
+    margin: var(--margin-large) 0;
+    font-size: 12rem;
+  }
+
+  @media (max-width: 900px) {
+    .header h1 {
+      font-size: 5rem;
+    }
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero-image .responsive-image {
+    width: 100%;
+    height: auto;
+    filter: url("#wavy");
+    object-fit: cover; /* Mantiene la relación de aspecto */
+  }
+
+  .about p {
+    margin: var(--margin-medium) 0;
+    font-size: var(--text-large);
+  }
+
+  @media (max-width: 900px) {
+    .about p {
+      font-size: var(--text-medium);
+    }
+  }
+</style>
+
+<script>
+  import { animation } from "./animation";
+  // Asegura que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    animation();
+  });
+</script>

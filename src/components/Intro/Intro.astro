@@ -4,33 +4,25 @@ import Card from "../Card/Card.astro";
 import projectsData from "./data.json";
 ---
 
-<Fragment>
-  <main class="loader">
-    <Wrapper>
-      <header class="header-content">
-        <h1 class="title">
-          <div class="name-container">
-            <span class="name">DIEGO</span>
-          </div>
-          <div class="lastname-container">
-            <span class="decoration">&times;</span>
-            <span class="lastname">CANO</span>
-          </div>
-        </h1>
-        <div class="subtitle-content">
-          <h2 class="subtitle">Geek of robust & simple development</h2>
-        </div>
-      </header>
-      <Card data={projectsData} />
-    </Wrapper>
-  </main>
-</Fragment>
+<Wrapper>
+  <header class="header-content">
+    <h1 class="title">
+      <div class="name-container">
+        <span class="name">DIEGO</span>
+      </div>
+      <div class="lastname-container">
+        <span class="decoration">&times;</span>
+        <span class="lastname">CANO</span>
+      </div>
+    </h1>
+    <div class="subtitle-content">
+      <h2 class="subtitle">Geek of robust & simple development</h2>
+    </div>
+  </header>
+  <Card data={projectsData} />
+</Wrapper>
 
 <style>
-  .loader {
-    height: 100vh;
-    width: 100vw;
-  }
   .name,
   .lastname,
   .subtitle,

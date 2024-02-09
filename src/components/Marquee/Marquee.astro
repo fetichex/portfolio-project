@@ -1,53 +1,67 @@
 ---
-import Divider from "../Divider/Divider.astro";
-
 const { text, repeatCount } = Astro.props;
 ---
 
 <div class="marquee">
-  <Divider />
-  <div class="marquee__inner" aria-hidden="true">
+  <ul class="marquee__inner">
     {
-      Array.from({ length: repeatCount }, () => (
-        <span class="marquee__item">{text}</span>
+      Array.from({ length: repeatCount }).map((_) => (
+        <li class="marquee__item">{text}</li>
       ))
     }
-  </div>
-  <Divider />
+  </ul>
 </div>
 
 <style>
-:root {
-  --offset: 20vw;
-  --move-initial: calc(-25% + var(--offset));
-  --move-final: calc(-50% + var(--offset));
-}
-
-.marquee {
-  overflow: hidden;
-  pointer-events: none;
-  position: relative; /* Asegura que la marquesina se posicione correctamente */
-}
-
-.marquee__inner {
-  display: flex;
-  animation: marquee 10s linear infinite; /* Hace que la animación se ejecute automáticamente */
-  opacity: 1; /* Visible desde el inicio */
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(var(--move-initial));
+  .marquee[data-animated="true"] {
+    overflow: hidden;
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white,
+      10%,
+      white,
+      98%,
+      transparent
+    );
   }
-  to {
-    transform: translateX(var(--move-final));
-  }
-}
 
-.marquee span {
-  white-space: nowrap;
-  font-weight: 900;
-  font-family: "Bigilla", sans-serif; /* Asegúrate de que la fuente esté disponible o cámbiala por una que tengas */
-  text-transform: uppercase;
-}
+  .marquee__inner {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .marquee[data-animated="true"] .marquee__inner {
+    animation: scroll-animation 40s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes scroll-animation {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
 </style>
+
+<script>
+  const marquee = document.querySelector(".marquee");
+  const marqueeInner = marquee.querySelector(".marquee__inner");
+  const marqueeItems = Array.from(marqueeInner.children);
+
+  console.log(marqueeItems);
+
+  const addAnimation = () => {
+    marquee.setAttribute("data-animated", "true");
+    marqueeItems.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      marqueeInner.appendChild(clone);
+    });
+
+    marquee.setAttribute("data-animated", "true");
+  };
+
+  if (!window.matchMedia("prefer-reduced-motion: reduce)").matches) {
+    addAnimation();
+  }
+</script>

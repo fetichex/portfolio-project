@@ -1,0 +1,39 @@
+---
+import Divider from "../Divider/Divider.astro";
+import Marquee from "../Marquee/Marquee.astro";
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="site-title">
+      <Marquee text="DOWNLOAD CV" repeatCount={2} />
+    </div>
+    <div class="site-year">💛 - 🦀 - 🦩</div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .navbar-container {
+    display: flex;
+    padding-block: 12px;
+    font-size: 16px;
+    justify-content: space-between;
+    background-color: #fff;
+  }
+
+  .site-title {
+    flex-grow: 2;
+  }
+
+  .site-year {
+    margin-left: 10px;
+    flex-grow: 0;
+    text-align: right;
+  }
+</style>

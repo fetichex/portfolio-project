@@ -2,15 +2,20 @@
 
 ---
 
-<div>
-  <slot />
+<div class="wrapper">
+  <div class="container">
+    <slot />
+  </div>
 </div>
 
 <style>
-  div {
-    position: relative;
-    height: 100vh;
-    width: min(95rem, 90vw);
+  .wrapper {
     margin-inline: auto;
+    width: min(95rem, 90vw);
+    min-height: 100vh
+  }
+
+  .container {
+    width: 100%;
   }
 </style>

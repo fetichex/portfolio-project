@@ -1,4 +1,7 @@
 ---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Wrapper from "../components/Wrapper/Wrapper.astro";
+
 interface Props {
   title: string;
 }
@@ -9,21 +12,29 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/base.css" />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Libre+Franklin:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="generator" content={Astro.generator} />
+    <!-- Google Fonts -->
     <title>{title}</title>
   </head>
-  <body>
-    <slot />
+  <body data-scroll-container>
+    <Wrapper>
+      <Navbar />
+      <slot />
+    </Wrapper>
+    <script src="./script.js"></script>
   </body>
 </html>
 <style is:global>
@@ -35,19 +46,25 @@ const { title } = Astro.props;
     --font-size-xl: clamp(2.37rem, 1.38vw + 2.02rem, 4.24rem);
     --font-size-xxl: clamp(3.16rem, 2.74vw + 2.47rem, 6.85rem);
     --font-size-xxxl: clamp(4.21rem, 5.1vw + 2.93rem, 11.09rem);
+    --divider-color: #333;
+    --text-large: 36px;
+    --text-medium: 24px;
+    --margin-large: 80px;
+    --margin-medium: 40px;
   }
   *,
   ::before,
   ::after {
+    margin: 0;
     box-sizing: border-box;
   }
   ul {
     list-style: none;
-    margin: 0;
     padding-inline: 2rem;
   }
   html {
-    font-family: "DM Mono", monospace;
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: 400;
     font-size: 16px;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -56,7 +73,6 @@ const { title } = Astro.props;
   }
 
   body {
-    margin: 0;
     overflow-x: hidden;
   }
 
@@ -102,35 +118,15 @@ const { title } = Astro.props;
   sup {
     top: -0.5em;
   }
-  p {
-    font-size: var(--font-size-sm);
-    margin: 0;
-  }
   h1 {
-    font-size: var(--font-size-xl);
-    margin: 0;
+    font-family: "Libre Baskerville", serif;
   }
 
   h2 {
-    font-size: var(--font-size-base);
-    font-weight: 300;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
   }
 
-  h3 {
-    font-size: var(--font-size-sm);
-  }
-
-  h4 {
-    font-size: 1em;
-  }
-
-  h5 {
-    font-size: 0.75em;
-  }
-
-  h6 {
-    font-size: 0.563em;
-  }
   table {
     text-indent: 0;
     border-color: inherit;
@@ -144,7 +140,6 @@ const { title } = Astro.props;
     font-family: inherit;
     font-size: 100%;
     line-height: 1.15;
-    margin: 0;
   }
 
   button,

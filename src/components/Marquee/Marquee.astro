@@ -1,0 +1,53 @@
+---
+import Divider from "../Divider/Divider.astro";
+
+const { text, repeatCount } = Astro.props;
+---
+
+<div class="marquee">
+  <Divider />
+  <div class="marquee__inner" aria-hidden="true">
+    {
+      Array.from({ length: repeatCount }, () => (
+        <span class="marquee__item">{text}</span>
+      ))
+    }
+  </div>
+  <Divider />
+</div>
+
+<style>
+:root {
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
+}
+
+.marquee {
+  overflow: hidden;
+  pointer-events: none;
+  position: relative; /* Asegura que la marquesina se posicione correctamente */
+}
+
+.marquee__inner {
+  display: flex;
+  animation: marquee 10s linear infinite; /* Hace que la animación se ejecute automáticamente */
+  opacity: 1; /* Visible desde el inicio */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(var(--move-initial));
+  }
+  to {
+    transform: translateX(var(--move-final));
+  }
+}
+
+.marquee span {
+  white-space: nowrap;
+  font-weight: 900;
+  font-family: "Bigilla", sans-serif; /* Asegúrate de que la fuente esté disponible o cámbiala por una que tengas */
+  text-transform: uppercase;
+}
+</style>

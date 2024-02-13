@@ -44,24 +44,16 @@ const { text, repeatCount } = Astro.props;
 </style>
 
 <script>
-  const marquee = document.querySelector(".marquee");
-  const marqueeInner = marquee.querySelector(".marquee__inner");
-  const marqueeItems = Array.from(marqueeInner.children);
-
-  console.log(marqueeItems);
-
-  const addAnimation = () => {
-    marquee.setAttribute("data-animated", "true");
-    marqueeItems.forEach((item) => {
-      const clone = item.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      marqueeInner.appendChild(clone);
-    });
-
-    marquee.setAttribute("data-animated", "true");
-  };
-
-  if (!window.matchMedia("prefer-reduced-motion: reduce)").matches) {
-    addAnimation();
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const marquee = document.querySelector(".marquee");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const marqueeInner = marquee.querySelector(".marquee__inner");
+      Array.from(marqueeInner.children).forEach((item) => {
+        const clone = item.cloneNode(true) as HTMLElement;
+        clone.setAttribute("aria-hidden", "true");
+        marqueeInner.appendChild(clone);
+      });
+      marquee.setAttribute("data-animated", "true");
+    }
+  });
 </script>

@@ -1,8 +1,9 @@
 ---
+
 ---
 
 <section class="about">
-<div class="about-container scroll-reveal">
+  <div class="about-container scroll-reveal">
     <p>
       <span>
         My focus is on developing software, designing websites, and industrial
@@ -18,6 +19,7 @@
 
 <style>
   .about {
+    margin-top: 150px;
     width: 100%;
   }
   .about-container {
@@ -27,7 +29,7 @@
 
   .about-container p {
     margin-block: 40px;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
   }
 
   @media (max-width: 900px) {
@@ -40,7 +42,7 @@
   }
 
   .scroll-reveal span {
-    color: hsla(0, 0%, 0%, 0.153);
+    color: hsla(0, 0%, 0%, 0.079);
     background-clip: text;
     background-repeat: no-repeat;
     background-size: 0% 100%;
@@ -60,3 +62,11 @@
     }
   }
 </style>
+
+<script>
+  import { animation } from "./animation";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    animation();
+  });
+</script>

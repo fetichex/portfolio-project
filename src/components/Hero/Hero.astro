@@ -16,47 +16,26 @@ import DiegoImage from "../../assets/p2.jpg";
       ></feDisplacementMap>
     </filter>
   </svg>
-  <div class="hero-image-container" data-scroll data-scroll-speed="2">
+  <div class="hero-image-container">
     <Image src={DiegoImage} alt="Diego Cano" class="responsive-image" />
   </div>
 </div>
-<Whitespace />
 
-<style>
-  svg {
-    position: absolute;
-  }
+<style lang="sass">
+  svg
+    position: absolute
+    width: 100%
+    height: auto
 
-  .hero-image {
-    width: 100%;
-    margin-top: -300px;
-  }
+  .hero-image
+    width: 100%
+    position: relative
+    overflow-x: hiddden
 
-  .hero-image::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .hero-image .hero-image-container {
-    width: 40%;
-    float: right;
-  }
-
-  .responsive-image {
-    width: 100%;
-    object-fit: cover;
-    filter: url("#wavy");
-  }
-
-  @media (max-width: 900px) {
-    .hero-image {
-      margin-top: 40px;
-    }
-    .hero-image .hero-image-container {
-      width: 100%;
-    }
-  }
+  .responsive-image
+    width: 100%
+    object-fit: cover
+    filter: url("#wavy")
 </style>
 
 <script>

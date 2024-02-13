@@ -1,0 +1,118 @@
+---
+import Divider from "../Divider/Divider.astro";
+---
+
+<section class="project">
+  <div class="project-container">
+    <div>
+      <nav class="menu">
+        <div class="menu__item">
+          <a class="menu__item-link">/ Asterisks</a>
+          <img class="menu__item-img" src="" alt="an image" />
+        </div>
+
+        <Divider />
+
+        <div class="menu__item">
+          <a class="menu__item-link">/ Unlocked</a>
+          <img class="menu__item-img" src="" alt="an image" />
+        </div>
+
+        <Divider />
+
+        <div class="menu__item">
+          <a class="menu__item-link">/ Offbeat Radio</a>
+          <img class="menu__item-img" src="" alt="an image" />
+        </div>
+
+        <Divider />
+
+        <div class="menu__item">
+          <a class="menu__item-link">/ Brutal</a>
+          <img class="menu__item-img" src="" alt="an image" />
+        </div>
+
+        <Divider />
+
+        <div class="menu__item">
+          <a class="menu__item-link">/ The Crew</a>
+          <img class="menu__item-img" src="" alt="an image" />
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu__item {
+    position: relative;
+    padding: 1.6vw 0 0 0;
+    margin: 4px;
+  }
+
+  .menu__item-link {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+    font-family: "Bigilla";
+    text-transform: uppercase;
+  }
+
+  .menu__item-link::before {
+    all: initial;
+    text-transform: uppercase;
+    counter-increment: menu;
+    position: absolute;
+    bottom: 60%;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .menu__item-img {
+    pointer-events: none;
+    position: absolute;
+    height: 50vh;
+    max-height: 400px;
+    opacity: 0;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+      translate3d(0, 20px, 0);
+    transform: translate3d(calc(-100% - 6vw), -30%, 0) translate3d(0, 20px, 0);
+  }
+
+  .menu__item-link:hover + .menu__item-img {
+    opacity: 1;
+    -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+      rotate3d(0, 0, 1, 4deg);
+    transform: translate3d(calc(-100% - 6vw), -30%, 0) rotate3d(0, 0, 1, 4deg);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .menu {
+    padding: 0vh 0 0 0vh;
+    --offset: 20vw;
+    --move-initial: calc(-25% + var(--offset));
+    --move-final: calc(-50% + var(--offset));
+    font-size: 8vw;
+  }
+
+  .marquee {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+
+  .menu__item-link {
+    white-space: nowrap;
+    font-size: 8vw;
+    padding: 1.6vw 1vw;
+    font-weight: 900;
+  }
+</style>

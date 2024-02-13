@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "astro": "^4.1.2",
-    "gsap": "^3.12.5",
-    "locomotive-scroll": "^5.0.0-beta.11"
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "cssnano": "^6.0.3",
+    "sass": "^1.70.0"
   }
 }

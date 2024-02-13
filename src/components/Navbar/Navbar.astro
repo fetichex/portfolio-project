@@ -3,41 +3,44 @@ import Divider from "../Divider/Divider.astro";
 import Marquee from "../Marquee/Marquee.astro";
 ---
 
-<nav class="navbar">
+<nav class="navbar animation">
   <div class="navbar-container">
     <div class="site-title">
-      <Marquee text="DOWNLOAD CV" repeatCount={14} />
     </div>
     <div class="site-year">💛 - 🦀 - 🦩</div>
   </div>
-  <Divider />
+    <Divider />
 </nav>
 
-<style>
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
+<style lang="sass">
+  .navbar
+    position: sticky
+    top: 0
+    z-index: 1
 
-  .navbar-container {
-    display: flex;
-    gap: 1rem;
-    padding-block: 12px;
-    justify-content: space-between;
-    background-color: #fff;
-  }
+    &-container
+      display: flex
+      gap: 1rem
+      overflow: hidden
+      padding-block: 12px
+      justify-content: space-between
+      background-color: #fff
 
-  .site-title {
-    display: flex;  
-    flex-grow: 1;
-    overflow: hidden;
-    align-items: center;
-  }
+  .site-title
+    display: flex
+    flex-grow: 1
+    overflow: hidden
+    align-items: center
 
-  .site-year {
-    flex-shrink: 0;
-    text-align: right;
-    font-size: xx-large;
-  }
+  .site-year
+    flex-shrink: 0
+    text-align: right
 </style>
+
+<script>
+  import { animation } from "./animation";
+  // Asegura que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    animation();
+  });
+</script>

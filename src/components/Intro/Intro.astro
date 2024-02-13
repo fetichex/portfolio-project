@@ -2,22 +2,25 @@
 import Header from "../Header/Header.astro";
 import Hero from "../Hero/Hero.astro";
 import AboutMe from "../AboutMe/AboutMe.astro";
+import Projects from "../Projects/Projects.astro";
 import SectionContainer from "../SectionContainer/SectionContainer.astro";
 ---
 
 <Header />
-<Hero />
-<SectionContainer sectionTitle="About Me" sectionOrder="01">
+<div class="flex-container">
   <AboutMe />
+  <Hero />
+</div>
+<SectionContainer sectionTitle="My Projects" sectionOrder="02">
+  <Projects />
 </SectionContainer>
-<SectionContainer sectionTitle="My Projects" sectionOrder="02" />
 <SectionContainer sectionTitle="Contact Me" sectionOrder="03" />
 
 <style>
-  .subtitle-content {
-    width: 100%;
+  .flex-container {
     display: flex;
+    width: 100%;
     justify-content: center;
-    margin-top: 80px;
+    gap: 40px;
   }
 </style>

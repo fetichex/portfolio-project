@@ -1,25 +1,43 @@
 ---
-
+const header = ["DIEGO CANO", "WEB DEVELOPER"];
 ---
 
 <div class="header">
   <div class="header-container">
-    <h1>DIEGO<br />&nbsp;&nbsp;&nbsp;CANO</h1>
+    {
+      header.map((word, index) => (
+        <div class={`header-text-container ${index === 0 ? "first" : "last"}`}>
+          <h1>{word}</h1>
+        </div>
+      ))
+    }
   </div>
 </div>
 
-<style>
-  .header {
-    margin-block: 80px;
-  }
+<style lang="sass">
+  .header
+    margin-block: 80px
+    display: flex
 
-  .header .header-container h1 {
-    font-size: 10.5rem;
-  }
+    &-container
+      width: 100%
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      gap: 12px
 
-  @media (max-width: 900px) {
-    .header .header-container h1 {
-      font-size: 5rem;
-    }
-  }
+    &-text-container.first
+      font-size: var(--text-large)
+
+    &-text-container
+      overflow-y: hidden
 </style>
+
+<script>
+  import { animation } from "./animation";
+  // Asegura que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    animation();
+  });
+</script>

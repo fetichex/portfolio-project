@@ -1,0 +1,70 @@
+---
+
+---
+
+<div id="text-container"></div>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const textContainer = document.getElementById("text-container");
+    const texto = "DIEGO CANO - WEB DEVELOPER";
+
+    if (!textContainer) {
+      return;
+    }
+    // Crear un span para cada carácter y añadirlo al contenedor
+    texto.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      textContainer.appendChild(span);
+    });
+
+    // Asegurarse de que los span puedan ser transformados por GSAP
+    gsap.set("#text-container span", {
+      position: "relative",
+      display: "inline-block",
+    });
+
+    // Añadir un listener para el movimiento del mouse sobre el contenedor de texto
+    textContainer.addEventListener("mousemove", (e) => {
+      const spans = document.querySelectorAll("#text-container span");
+      spans.forEach((span) => {
+        const rect = span.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Si el cursor está cerca del carácter, moverlo en la dirección opuesta al cursor
+        if (distance < 100) {
+          // Invertir la dirección del movimiento para que el texto sea repelido por el cursor
+          gsap.to(span, {
+            x: (-dx / distance) * (100 - distance),
+            y: (-dy / distance) * (100 - distance),
+            ease: "power1.out",
+            duration: 0.3,
+          });
+        } else {
+          // Regresar el carácter a su posición original si el cursor está lejos
+          gsap.to(span, {
+            x: 0,
+            y: 0,
+            ease: "power1.out",
+            duration: 0.3,
+          });
+        }
+      });
+    });
+
+    // Cuando el mouse sale del contenedor, volver todos los spans a su lugar
+    textContainer.addEventListener("mouseleave", () => {
+      gsap.to("#text-container span", {
+        x: 0,
+        y: 0,
+        ease: "power1.out",
+        duration: 0.3,
+      });
+    });
+  });
+</script>

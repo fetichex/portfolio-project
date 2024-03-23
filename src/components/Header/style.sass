@@ -1,0 +1,86 @@
+.header
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 100vh
+  width: 100%
+  position: relative
+
+
+  .container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    height: 60%
+    width: 100%
+  
+
+    .names-container
+      display: flex
+      width: 100%
+      justify-content: center
+      align-items: center
+    
+
+      .header-content
+        position: relative
+        display: flex
+        flex: 1
+        flex-direction: row // Ajuste para que las letras se alineen horizontalmente
+        justify-content: center
+        transform: scale(0.25)
+        align-items: center
+
+        &.item-1, &.item-2
+          font-size: var(--font-size-xxxl)
+
+          .letter
+            display: flex
+            flex: 1
+            justify-content: center
+            align-items: center
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%)
+
+        &.item-1
+          left: 15vw
+
+        &.item-2
+          right: 15vw
+
+    .header-content
+    
+      transform: scale(0.25)
+      &.item-3
+        font-size: var(--font-size-xl)
+        display: flex
+        justify-content: center
+        align-items: center
+
+.image-container
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+
+  .img
+    width: 100%
+    height: 100%
+    object-fit: contain
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0)
+
+.montserrat
+  font-family: "Montserrat", sans-serif
+  font-optical-sizing: auto
+  font-weight: 700
+  font-style: normal
+
+.moirai
+  font-family: "Moirai One", system-ui
+  font-optical-sizing: auto
+  font-weight: 800
+  font-style: normal
+  color: red

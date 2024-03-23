@@ -2,13 +2,12 @@
 import Whitespace from "../Whitespace/Whitespace.astro";
 import Divider from "../Divider/Divider.astro";
 
-const { sectionTitle, sectionOrder } = Astro.props;
+const { sectionTitle } = Astro.props;
 ---
 
 <div class="section-header">
   <div class="section-header-container">
     <div class="section-title"><p>{sectionTitle}</p></div>
-    <div class="section-order"><p>/{sectionOrder}</p></div>
   </div>
 </div>
 <Divider />
@@ -32,17 +31,7 @@ const { sectionTitle, sectionOrder } = Astro.props;
     width: 100%;
   }
 
-  .container::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
   .section-title {
     font-weight: 700;
-  }
-
-  .section-order {
-    opacity: 0.7;
   }
 </style>

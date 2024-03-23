@@ -10,26 +10,42 @@
         products with the goal of enriching life. Architecture, designer
         furniture, and textures capture my imagination, driving me to explore
         both the physical and digital spaces.<br /><br /> I believe in the power
-        of creating with purpose and finding harmony between aesthetics and function.<br
-        /><br /> In my work, my goal is to simplify, not complicate.
+        of creating with purpose and finding harmony between aesthetics and function.
+        <br /><br /> In my work, my goal is to simplify, not complicate.
       </span>
     </p>
   </div>
+  <div class="demo"></div>
 </section>
 
 <style>
   .about {
-    margin-top: 150px;
     width: 100%;
-  }
-  .about-container {
-    width: 70%;
-    float: right;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
-  .about-container p {
+  .about-container {
+    margin-top: 120px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-container p span {
     margin-block: 40px;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
+    line-height: 2;
+  }
+
+  .demo {
+    width: 50%;
+    height: 600px;
+    background-color: var(--divider-color);
   }
 
   @media (max-width: 900px) {
@@ -52,8 +68,8 @@
   }
 
   .scroll-reveal p span {
-    animation-range-start: cover 10vh;
-    animation-range-end: cover 70vh;
+    animation-range-start: cover 30vh;
+    animation-range-end: cover 190vh;
   }
 
   @keyframes scroll-reveal {
@@ -62,11 +78,3 @@
     }
   }
 </style>
-
-<script>
-  import { animation } from "./animation";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    animation();
-  });
-</script>

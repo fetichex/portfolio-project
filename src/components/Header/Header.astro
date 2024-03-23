@@ -1,43 +1,44 @@
 ---
-const header = ["DIEGO CANO", "WEB DEVELOPER"];
+// Import the styles
+import { Image } from "astro:assets";
+import DiegoCano from "../../assets/img.png";
+import "./style.sass";
+
+// Arrays for name and lastname
+const name = ["D", "I", "E", "G", "O"];
+const lastName = ["C", "A", "N", "O"];
 ---
 
-<div class="header">
-  <div class="header-container">
-    {
-      header.map((word, index) => (
-        <div class={`header-text-container ${index === 0 ? "first" : "last"}`}>
-          <h1>{word}</h1>
-        </div>
-      ))
-    }
+<!-- Component structure -->
+<div class="header montserrat">
+  <div class="image-container">
+    <Image src={DiegoCano} alt="Background Image" loading="lazy" class="img" />
+  </div>
+  <div class="container">
+    <div class="names-container">
+      <div class="header-content item-1">
+        {
+          name.map((letter) => (
+            <div class="letter">
+              <div class="letter-wrapper">{letter}</div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="header-content item-2">
+        {
+          lastName.map((letter) => (
+            <div class="letter">
+              <div class="letter-wrapper">{letter}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="header-content item-3">
+      <div class="title-wrapper">WEB DEVELOPER</div>
+    </div>
   </div>
 </div>
 
-<style lang="sass">
-  .header
-    margin-block: 80px
-    display: flex
-
-    &-container
-      width: 100%
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      gap: 12px
-
-    &-text-container.first
-      font-size: var(--text-large)
-
-    &-text-container
-      overflow-y: hidden
-</style>
-
-<script>
-  import { animation } from "./animation";
-  // Asegura que el DOM esté listo
-  document.addEventListener("DOMContentLoaded", () => {
-    animation();
-  });
-</script>
+<script src="./script.ts"></script>

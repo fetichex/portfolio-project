@@ -1,0 +1,23 @@
+---
+const { text } = Astro.props;
+---
+
+<div id="sketch" data-text={text}></div>
+
+<script >
+  import { startSketch } from "./sketch.ts";
+  document.addEventListener('DOMContentLoaded', () => {
+    const sketch = document.querySelector("#sketch");
+    const AstroText = sketch.getAttribute('data-text');
+    if (AstroText) {
+      startSketch(sketch, AstroText);
+    }
+  });
+</script>
+
+<style>
+  #sketch {
+    width: 100%;
+    height: 100vh;
+  }
+</style>
